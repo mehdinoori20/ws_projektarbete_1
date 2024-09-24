@@ -16,7 +16,15 @@ public class WeatherController {
         this.weatherService = weatherService;
     }
 
-
+    @GetMapping
+    public ResponseEntity<Weather> getCurrentWeather(@RequestParam String city) {
+        try {
+            Weather weather = weatherService.fetchCurrentWeather(city);
+            return ResponseEntity.ok(weather);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 
 
 }
