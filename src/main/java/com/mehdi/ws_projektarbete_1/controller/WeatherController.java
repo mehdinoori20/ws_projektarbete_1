@@ -25,6 +25,15 @@ public class WeatherController {
             return ResponseEntity.badRequest().build();
         }
     }
+    @PostMapping
+    public ResponseEntity<Weather> createWeather(@RequestBody Weather weather) {
+        try {
+            Weather savedWeather = weatherService.saveWeather(weather);
+            return ResponseEntity.ok(savedWeather);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 
 
 }
