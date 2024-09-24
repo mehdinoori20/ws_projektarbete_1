@@ -10,7 +10,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/v1/weather")
 public class WeatherController {
+    private final WeatherService weatherService;
+
+    public WeatherController(WeatherService weatherService) {
+        this.weatherService = weatherService;
+    }
+
 
 
 
 }
+
