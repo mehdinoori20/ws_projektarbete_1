@@ -34,6 +34,15 @@ public class WeatherController {
             return ResponseEntity.badRequest().build();
         }
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Weather> updateWeather(@PathVariable Long id, @RequestBody Weather weather) {
+        try {
+            Weather updatedWeather = weatherService.updateWeather(id, weather);
+            return ResponseEntity.ok(updatedWeather);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 
 
 }
