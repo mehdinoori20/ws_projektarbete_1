@@ -1,0 +1,37 @@
+/* Stilar för stad/land input och sökknapp */
+#city-search-section {
+     background-color: rgba(240, 248, 255, 0.8); /* Bakgrundsfärg med 80% opacitet */
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        opacity: 0.75; /* 60% opacitet för mer genomskinlighet */
+}
+
+#city-search-section form {
+    display: inline-block;
+}
+
+#city-search-section input {
+    padding: 8px; /* Minska padding för att göra fältet mindre */
+    font-size: 0.9em; /* Minska textstorleken för att göra den lite mindre */
+    width: 220px; /* Minska bredden för att göra fältet mindre */
+    margin-right: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#city-search-section button {
+    padding: 8px 12px; /* Minska padding för knappen */
+    font-size: 0.9em; /* Minska textstorleken för knappen */
+    background-color: #00509e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#city-search-section button:hover {
+    background-color: #003d72;
+}
