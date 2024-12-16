@@ -18,7 +18,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 // - Ist man matar in "?city=Uppsala" i webben när man är inloggad för att se uppsalas väder ist skapa en sökruta
 // - Om man stavar en stad eller ett land fel då kommer upp ett meddelande att tex rätta till ....
 // - Ändra fr kelvin till celsius
-// - Skapa enhetstest
+// - Skapa enhetstest för WeatherController klass
 // - CityNotFoundException
 // - Skapa WeatherResponse och metod samt getter och setter mm i WeatherService klassen för att mappa JSON-svaret från API:et till Java-objekt
 // - Passande css till inloggning, utloggningssida
