@@ -1,0 +1,180 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('https://i1.delgarm.com/i/806/020825/6555f0cd48270.jpeg'); /* Lägg in bakgrundsbild */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white; /* Gör texten synlig mot en mörk bakgrund */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Ger texten bättre kontrast */
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+#instruction {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold; /* Gör texten fet */
+    font-style: italic; /* Gör texten kursiv */
+    animation: blink 2s infinite; /* Lägg till animation */
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1; /* Fullt synlig */
+    }
+    50% {
+        opacity: 0; /* Osynlig */
+    }
+}
+/* logout knapp */
+button {
+    padding: 10px 20px;
+       background-color: #f44336; /* Röd färg */
+       color: white; /* Textfärg */
+       border: none;
+       border-radius: 5px;
+       cursor: pointer;
+       font-size: 0,9rem;
+       text-align: center;
+}
+
+button:hover {
+    background-color: #d32f2f;
+}
+
+#weather-info {
+    display: flex;
+    flex-direction: column; /* Vertikal layout */
+    align-items: flex-start; /* Justera texten till vänster */
+    gap: 10px; /* Standard avstånd mellan elementen */
+    margin-top: 20px; /* Separera från övriga element */
+}
+
+#weather-info h1 {
+    margin: 0 0 15px 0; /* Skapa avstånd under rubriken */
+    font-size: 1.5rem; /* Anpassa rubrikens storlek */
+}
+
+#weather-info p {
+    margin: 0; /* Tar bort oönskade marginaler mellan texten */
+}
+
+#weather-info form {
+    margin-top: 20px; /* Skapa avstånd ovanför knappen */
+    align-self: flex-start; /* Placera knappen till vänster */
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+    color: white;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7); /* Ger texten bättre kontrast */
+}
+
+/* Stil för "Mer om oss"-knappen */
+/* Stil för "Mer om oss"-knappen */
+#aboutButton {
+    position: fixed; /* Fast placerad längst ner till höger */
+    bottom: 10px; /* Avstånd från botten */
+    right: 20px; /* Avstånd från höger */
+    background-color: #00509e; /* Färg */
+    color: white; /* Textfärg */
+    border: none; /* Ingen kant */
+    padding: 5px 15px; /* Samma padding som policy-knappar */
+    border-radius: 5px; /* Mjuka hörn */
+    cursor: pointer; /* Pekare vid hovring */
+    font-size: 0,9rem; /* Samma fontstorlek */
+    min-width: 140px; /* Samma minimumbredd som policy-knappar */
+    text-align: center; /* Centrera texten */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Skugga */
+}
+
+/* Effekt vid hovring */
+#aboutButton:hover {
+    background-color: #007bb5; /* Mörkare blå vid hovring */
+}
+
+
+
+/* Modal stil */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    color: black;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.modal-header button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+#aboutContent {
+    font-size: 0,9rem;
+    line-height: 1.5;
+}
+
+#aboutContent p {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-location::before {
+    content: "📍";
+    font-size: 1.2em;
+}
+
+.icon-email::before {
+    content: "✉️";
+    font-size: 1.2em;
+}
+
+.icon-phone::before {
+    content: "📞";
+    font-size: 1.2em;
+}
