@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -28,13 +30,29 @@ public class WeatherService {
 
     public Weather fetchCurrentWeather(String city) {
         try {
-            String url = String.format("%s/weather?q=%s&appid=%s", apiUrl, city, apiKey);
+            // Bygg korrekt URL med UriComponentsBuilder
+            String url = UriComponentsBuilder.fromHttpUrl(apiUrl)
+                    .path("/weather")
+                    .queryParam("q", city)
+                    .queryParam("appid", apiKey)
+                    .toUriString();
+
+            // Logga den genererade URL:en för att verifiera att den är korrekt
+            System.out.println("Generated URL: " + url);
+
             ResponseEntity<WeatherResponse> response = restTemplate.getForEntity(url, WeatherResponse.class);
             if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
                 WeatherResponse weatherResponse = response.getBody();
                 Weather weather = new Weather();
                 weather.setCityName(city);
-                weather.setTemperature(weatherResponse.getMain().getTemp());
+
+                // Hämta temperatur i Kelvin från API och omvandla till Celsius
+                double kelvinTemperature = weatherResponse.getMain().getTemp();
+                double celsiusTemperature = kelvinTemperature - 273.15;  // Omvandla till Celsius
+
+                // Sätt den omvandlade temperaturen i Celsius
+                weather.setTemperature(celsiusTemperature);
+
                 weather.setHumidity(weatherResponse.getMain().getHumidity());
                 weather.setWeatherDescription(weatherResponse.getWeather().get(0).getDescription());
                 weather.setTimestamp(LocalDateTime.now());
@@ -81,13 +99,12 @@ public class WeatherService {
         }
     }
 
-    // Inner class for handling OpenWeatherMap API response
-    private static class WeatherResponse {
+    // Public klass för WeatherResponse
+    public static class WeatherResponse {
         private Main main;
         private java.util.List<WeatherDetails> weather;
 
         // Getters and Setters
-
         public Main getMain() {
             return main;
         }
@@ -105,12 +122,12 @@ public class WeatherService {
         }
     }
 
-    private static class Main {
+    // Public klass för Main
+    public static class Main {
         private double temp;
         private int humidity;
 
         // Getters and Setters
-
         public double getTemp() {
             return temp;
         }
@@ -128,11 +145,11 @@ public class WeatherService {
         }
     }
 
-    private static class WeatherDetails {
+    // Public klass för WeatherDetails
+    public static class WeatherDetails {
         private String description;
 
         // Getters and Setters
-
         public String getDescription() {
             return description;
         }

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="sv" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Väderinformation</title>
+    <link rel="stylesheet" type="text/css" href="/styles2.css">
+    <link rel="stylesheet" type="text/css" href="/policy-styles.css">
+    <link rel="stylesheet" type="text/css" href="/weather-styles.css">
+</head>
+<body>
+<header>
+    <h1>Välkommen till väderinformationen</h1>
+    <p id="instruction">Vänligen ange land eller stad för att se vädret</p>
+</header>
+<main>
+    <section id="city-search-section">
+        <form action="/v1/weather" method="get">
+            <label for="cityInput">Ange stad eller land:</label>
+            <input type="text" id="cityInput" name="city" placeholder="Ange stad eller land" required>
+            <button type="submit">Sök</button>
+        </form>
+    </section>
+
+    <!-- Felmeddelande om det finns ett error-parameter -->
+    <section th:if="${error}">
+        <div id="error-message" style="color: red;">
+            <p th:text="${error}"></p>
+        </div>
+    </section>
+
+    <section>
+        <div id="weather-info" th:if="${weather}">
+            <h1>Aktuellt väder</h1>
+            <p><strong>Stad:</strong> <span th:text="${weather.cityName}"></span></p>
+            <p><strong>Temperatur:</strong> <span th:text="${#numbers.formatDecimal(weather.temperature, 0, 2)}"></span> °C</p>
+            <p><strong>Luftfuktighet:</strong> <span th:text="${weather.humidity}"></span>%</p>
+            <p><strong>Väderbeskrivning:</strong> <span th:text="${weather.weatherDescription}"></span></p>
+            <p><strong>Uppdaterad:</strong> <span th:text="${weather.timestamp}"></span></p>
+            <form action="/logout" method="post">
+                <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                <button type="submit">Logga ut</button>
+            </form>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 Väderapp. Alla rättigheter förbehållna.</p>
+    <div class="policy-links">
+        <button onclick="showPolicy('terms')">Allmänna villkor</button>
+        <button onclick="showPolicy('privacy')">Integritetspolicy</button>
+        <button onclick="showPolicy('cookies')">Cookiepolicy</button>
+    </div>
+    <button id="aboutButton" onclick="showAbout()">Mer om oss</button>
+</footer>
+
+<!-- Modaler för policy-knapparna -->
+<div id="termsModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Allmänna villkor</h2>
+            <button onclick="closeModal('terms')">×</button>
+        </div>
+        <div id="termsContent">
+            <p>Här är innehållet för Allmänna villkor...men tyvärr finns ingenting och läsa :)</p>
+        </div>
+    </div>
+</div>
+
+<div id="privacyModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Integritetspolicy</h2>
+            <button onclick="closeModal('privacy')">×</button>
+        </div>
+        <div id="privacyContent">
+            <p>Innehållet kommer inom snar framtid</p>
+        </div>
+    </div>
+</div>
+
+<div id="cookiesModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Cookiepolicy</h2>
+            <button onclick="closeModal('cookies')">×</button>
+        </div>
+        <div id="cookiesContent">
+            <p>Innehållet innehåller dold information. Var god stäng applikationen</p>
+        </div>
+    </div>
+</div>
+
+<!-- Modal för "Mer om oss" -->
+<div id="aboutModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Mer om oss</h2>
+            <button onclick="closeAbout()">×</button>
+        </div>
+        <div id="aboutContent">
+            <p><i class="icon-location"></i> Liljeholmstorget, 117 63 Stockholm</p>
+            <p><i class="icon-email"></i> info@sti.se</p>
+            <p><i class="icon-phone"></i> 08-545 835 80</p>
+        </div>
+    </div>
+</div>
+
+<script src="/scripts.js"></script>
+</body>
+</html>

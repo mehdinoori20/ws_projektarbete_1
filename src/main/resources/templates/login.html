@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="sv" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loginPage</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="login-container">
+    <h1>Välkommen!</h1>
+    <p>Vänligen logga in för att se väderinformationen.</p>
+    <div th:if="${param.error}">
+        <p style="color: red;">Nämen på riktig, glömde du bort lösenordet, hmmm du förtjänar en örfil.</p>
+    </div>
+    <form action="/login" method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}" />
+        <input type="text" id="username" name="username" placeholder="Användarnamn" required />
+        <input type="password" id="password" name="password" placeholder="Lösenord" required />
+        <button type="submit">Logga in</button>
+    </form>
+</div>
+</body>
+</html>

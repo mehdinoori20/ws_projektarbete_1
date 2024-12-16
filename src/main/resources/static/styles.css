@@ -1,0 +1,120 @@
+/* Allmän bakgrund */
+body {
+    font-family: 'Arial', sans-serif;
+      background: url('https://media.istockphoto.com/id/1067764520/sv/foto/termometer-i-sn%C3%B6n.jpg?s=612x612&w=0&k=20&c=e5bjKOLWifmiI4kZuMBw3WZ6kBDXcbGMtKZSGWVDUV8=') no-repeat center center fixed;
+      background-size: cover; /* Gör att bilden täcker hela bakgrunden utan att förlora proportioner */
+      background-position: center center;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0
+}
+
+/* Inloggningscontainer */
+.login-container {
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+}
+
+/* Nyckelramsanimation för blinkande effekt */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Rubrikstil */
+h1 {
+    color: #3b5998; /* Elegant blå ton */
+    font-style: italic; /* Kursiv stil */
+    margin-bottom: 10px;
+    animation: blink 1.5s infinite; /* Blinkar var 1.5 sekund */
+}
+
+/* Välkomsttext */
+p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* Form-element */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #3b5998;
+    outline: none;
+    box-shadow: 0 0 8px rgba(59, 89, 152, 0.5);
+}
+
+/* Knapp */
+button {
+    background-color: #3b5998; /* Samma blå ton som rubriken */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2d4373; /* Mörkare blå vid hover */
+}
+
+/* För små skärmar */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .login-container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    button {
+        width: 100%;
+    }
+}
